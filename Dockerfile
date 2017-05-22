@@ -7,7 +7,6 @@ FROM alpine:edge
 MAINTAINER negabaro(negabaro@gmail.com) 
 
 ENV LANG C.UTF-8
-
 ENV PY_DEPS \
       curl \
       python \
