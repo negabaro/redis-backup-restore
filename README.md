@@ -27,18 +27,18 @@ The following are a set of example commands:
 ##### Export
 This is an example of running an `EXPORT` operation:
 ```bash
-docker run -v /ebs/data:/ebs/data  -e redisoperation="export" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="foo_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro/redis-backup-restore 
+docker run -v /ebs/data:/ebs/data  -e redisoperation="export" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="foo_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro2/redis-backup-restore 
 ```
 ##### Import
 This is an example of running an `IMPORT` operation:
 ```bash
-docker run -v /ebs/data:/ebs/data -e redisoperation="import" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="foo_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro/redis-backup-restore 
+docker run -v /ebs/data:/ebs/data -e redisoperation="import" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="foo_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro2/redis-backup-restore 
 ```
 
 #### Cron
 You can set Redis Backup to run via `Cron`. The following example will backup Redis once every 30 minutes:
 ```bash
-*/30 * * * * /usr/bin/bash -c 'docker run -v /ebs:/ebs -e redisoperation="export" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="`date +\%Y\%m\%d\%H\%M\%S`_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro/redis-backup-restore' >> /ebs/logs/redisbackup/redisbackup.log 2>&1
+*/30 * * * * /usr/bin/bash -c 'docker run -v /ebs:/ebs -e redisoperation="export" -e rediskeydir="/ebs/data/backup/redis/" -e rediskeyfile="`date +\%Y\%m\%d\%H\%M\%S`_redisbackup.json" -e redishost="172.17.0.1" -e redisport="6379" -e redisdb="0" negabaro2/redis-backup-restore' >> /ebs/logs/redisbackup/redisbackup.log 2>&1
 ```
 
 The Cron export dynamically includes the timestamp in the filename. This allows you to easily run backups at set intervals, creating distinct point-in-time snapshots.
